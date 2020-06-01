@@ -10,12 +10,37 @@
 </head>
 <body>
 
-    <div id="container"></div>
+    <div id="app"></div>
+
 
     <script type="text/babel">
+
+        var Comment = React.createClass({
+            edit: function () {
+                alert('Editing Comment')
+            },
+            remove: function() {
+                alert('Removing comment')
+            },
+
+            render: function () {
+                return (
+                    <div classname="commentContainer">
+                        <div className="commentText">{this.props.children}</div>
+                        <button onClick={this.edit} className="button-primary">Edit</button>
+                        <button onClick={this.remove} className="button-danger">Remove</button>
+                    </div>
+                );
+            }
+        })
+
         ReactDOM.render(
-            <h2>Welcome to React!</h2>,
-            document.getElementById('container')
+            <div classname= "board">
+                <Comment>Hey now</Comment>
+                <Comment>Beans</Comment>
+                <Comment>Tuna</Comment>
+            </div>,
+            document.getElementById('app')
         );
     </script>
 
