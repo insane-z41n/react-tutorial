@@ -1,12 +1,32 @@
 ![](http://i.imgur.com/5Bqs5zi.png)
 
-React boilerplate thenewboston tutorials.
+React boilerplate modified from theneboston tutorials
 
 ## Getting started
 
-To get started simply download the repo using the link below. All required files are included.
+To run your React app first Navigate to the root directory in your terminal `react-tutorial`
 
-https://github.com/buckyroberts/React-Boilerplate/archive/master.zip
+1.) Run the following command: 
+
+```$xslt
+npm install
+```
+If you don't have npm go to this site to get setup https://www.npmjs.com/get-npm
+
+2.) Start your http-server with the following command:
+
+```$xslt
+npm start
+```
+If you want to edit this script go to the `package.json` file.
+You can edit the port here.
+
+3). Go to  http://localhost:8989
+
+Navigate through the folders
+`src->demos->00_template`
+
+4.) You should see your React app running!
 
 ## Setting up Gulp (optional)
 
