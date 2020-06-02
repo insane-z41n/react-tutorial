@@ -21,57 +21,44 @@
         var Counter = React.createClass({
 
            getInitialState: function() {
-               return {editing: false}
+               return {currentNum: this.props.currentValue}
            },
 
-           add: function (num) {
+           add: function () {
+               var num = this.state.currentNum;
                num++;
+               this.setState({currentNum:num})
                console.log("Add Number: " + num);
            },
 
-           subtract: function (num) {
+           subtract: function () {
+               var num = this.state.currentNum;
                num--;
+               this.setState({currentNum: num})
                console.log("Subtract Number: " + num);
            },
 
-           edit: function() {
-               this.setState({editing: true})
-           },
-
-           save: function() {
-               this.setState({editing: false})
-           },
 
            //Create a Prop to evaluate the current h2
            renderDefault: function() {
-               var currentNum = this.props.currentValue;
                return (
                    <div>
-                       <div>{currentNum}</div>
-                       <button onClick={this.subtract.bind(null, currentNum)}>-</button>
-                       <button onClick={this.edit}>edit</button>
-                       <button onClick={this.add.bind(null, currentNum)}>+</button>
+                       <div>{this.state.currentNum}</div>
+                       <button onClick={this.subtract}>-</button>
+                       <button onClick={this.add}>+</button>
                    </div>
                );
            },
 
-            renderEditing: function() {
-                var currentNum = this.props.currentValue;
-                return (
-                    <div>
-                        <textarea>{currentNum}</textarea>
-                        <button onClick={this.save}>Save</button>
-                    </div>
-                );
-            },
 
            render: function() {
-               if(this.state.editing) {
-                   return this.renderEditing();
-               }
+
                return this.renderDefault();
+
            }
         })
+
+
 
         //Pass in a Prop to Counter
         ReactDOM.render(
