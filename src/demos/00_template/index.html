@@ -17,17 +17,28 @@
 
         //Basic React Component with header.
         var Counter = React.createClass({
-           render: function() {
+
+           //Create hard coded buttons.
+           renderDefault: function() {
                return (
                    <div>
-                       <h1>I am the Count</h1>
+                       <h2>1</h2>
+                       <button>-</button>
+                       <button>edit</button>
+                       <button>+</button>
                    </div>
                );
+           },
+           render: function() {
+               return this.renderDefault();
            }
         })
 
+        //Create Multiple Components
         ReactDOM.render(
-            <Counter />,
+            <div>
+                <Counter/>
+            </div>,
             document.getElementById('app')
         );
     </script>
