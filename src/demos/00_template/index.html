@@ -18,11 +18,11 @@
         //Basic React Component with header.
         var Counter = React.createClass({
 
-           //Create hard coded buttons.
+           //Create a Prop to evaluate the current h2
            renderDefault: function() {
                return (
                    <div>
-                       <h2>1</h2>
+                       <h2>{this.props.currentValue}</h2>
                        <button>-</button>
                        <button>edit</button>
                        <button>+</button>
@@ -34,10 +34,10 @@
            }
         })
 
-        //Create Multiple Components
+        //Pass in a Prop to Counter
         ReactDOM.render(
             <div>
-                <Counter/>
+                <Counter currentValue='0'/>
             </div>,
             document.getElementById('app')
         );
