@@ -15,17 +15,28 @@
 
     <script type="text/babel">
 
-        //Basic React Component with header.
+        //Create add and subtract functions
         var Counter = React.createClass({
+
+           add: function (num) {
+               num++;
+               console.log("Add Number: " + num);
+           },
+
+           subtract: function (num) {
+               num--;
+               console.log("Subtract Number: " + num);
+           },
 
            //Create a Prop to evaluate the current h2
            renderDefault: function() {
+               var currentNum = this.props.currentValue;
                return (
                    <div>
-                       <h2>{this.props.currentValue}</h2>
-                       <button>-</button>
+                       <h2>{currentNum}</h2>
+                       <button onClick={this.subtract.bind(null, currentNum)}>-</button>
                        <button>edit</button>
-                       <button>+</button>
+                       <button onClick={this.add.bind(null, currentNum)}>+</button>
                    </div>
                );
            },
