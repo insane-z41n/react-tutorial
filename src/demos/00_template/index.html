@@ -15,8 +15,14 @@
 
     <script type="text/babel">
 
+
+
         //Create add and subtract functions
         var Counter = React.createClass({
+
+           getInitialState: function() {
+               return {editing: false}
+           },
 
            add: function (num) {
                num++;
@@ -28,19 +34,41 @@
                console.log("Subtract Number: " + num);
            },
 
+           edit: function() {
+               this.setState({editing: true})
+           },
+
+           save: function() {
+               this.setState({editing: false})
+           },
+
            //Create a Prop to evaluate the current h2
            renderDefault: function() {
                var currentNum = this.props.currentValue;
                return (
                    <div>
-                       <h2>{currentNum}</h2>
+                       <div>{currentNum}</div>
                        <button onClick={this.subtract.bind(null, currentNum)}>-</button>
-                       <button>edit</button>
+                       <button onClick={this.edit}>edit</button>
                        <button onClick={this.add.bind(null, currentNum)}>+</button>
                    </div>
                );
            },
+
+            renderEditing: function() {
+                var currentNum = this.props.currentValue;
+                return (
+                    <div>
+                        <textarea>{currentNum}</textarea>
+                        <button onClick={this.save}>Save</button>
+                    </div>
+                );
+            },
+
            render: function() {
+               if(this.state.editing) {
+                   return this.renderEditing();
+               }
                return this.renderDefault();
            }
         })
